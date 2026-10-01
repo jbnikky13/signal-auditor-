@@ -1,0 +1,2 @@
+# Optional manual MercuryEdge export.
+# Paste one or more signal messages below this comment.
