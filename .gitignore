@@ -1,4 +1,12 @@
 .env
 venv/
+.venv/
 __pycache__/
+*.py[cod]
 *.session
+.pytest_cache/
+data/audit.db
+data/audit-report.txt
+data/audit-results.csv
+data/candles/*.csv
+!data/.gitkeep
