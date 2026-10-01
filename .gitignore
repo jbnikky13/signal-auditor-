@@ -5,8 +5,8 @@ __pycache__/
 *.py[cod]
 *.session
 .pytest_cache/
-data/audit.db
-data/audit-report.txt
-data/audit-results.csv
+
+# Generated market cache is not versioned.
 data/candles/*.csv
-!data/.gitkeep
+
+# Keep the audit database and reports versioned so GitHub Actions can persist history.
