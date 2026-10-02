@@ -74,6 +74,10 @@ jobs:
           mkdir -p data
           python run.py report --csv data/audit-results.csv | tee data/audit-report.txt
 
+      - name: Send audit results to MercuryEdge Telegram bot
+        if: ${{ env.BOT_TOKEN != '' && env.BOT_CHAT_ID != '' }}
+        run: python notify_telegram.py
+
       - name: Upload audit report
         uses: actions/upload-artifact@v4
         with:
