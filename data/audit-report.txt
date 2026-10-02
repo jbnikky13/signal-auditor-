@@ -1,27 +1,50 @@
-SIGNAL AUDIT
+📊 SIGNAL AUDITOR
 
-Outcomes:
-outcome
-TP2            8
-SL             5
-TP1_THEN_SL    4
-OPEN           2
-NO_DATA        1
+📌 SUMMARY
+────────────
+Signals: 20   •   Decided: 17
+Open: 2   •   No data: 1
 
-Decided signals: 17
-TP1 before SL: 70.6%   TP2 reached: 47.1%   SL first: 29.4%
-Expectancy, close all at TP1: +0.52R per trade
-Expectancy, hold to TP2 (orig SL): +0.53R per trade
-Provider's avg claimed 3D hit rate: n/a
+OUTCOMES
+────────
+TP2 reached: 8
+TP1 → SL: 4
+SL first: 5
+Still open: 2
+No market data: 1
 
-By score band:
+📈 SETTLEMENT
+────────────
+TP1 before SL: 70.6%
+TP2 reached: 47.1%
+SL first: 29.4%
+Expectancy @ TP1: +0.52R / trade
+Expectancy @ TP2: +0.53R / trade
+Total simulated R @ TP1: +8.89R
+Total simulated R @ TP2: +9.09R
+
+🧾 PROVIDER DATA
+────────────────
+Claimed 3D hit rate: 0/17 signals available
+Provider average: n/a
+
+🔎 DATA QUALITY
+──────────────
+Missing score: 20/20
+Missing TP2: 0/20
+Missing claimed hit rate: 20/20
+
+📊 BREAKDOWNS
+─────────────
+
+By score band
 (no decided signals)
 
-By cross-market agreement:
-           xmkt  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
-agreement <100% 17        70.6  47.1 29.4            0.52
+By cross-market agreement
+ xmkt  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
+<100% 17        70.6  47.1 29.4            0.52
 
-By symbol:
+By symbol
 symbol  n  TP1_first%  TP2%   SL%  avgR(exit@TP1)
 AUDJPY  1       100.0 100.0   0.0            1.16
 AUDUSD  2        50.0  50.0  50.0            0.08
@@ -37,9 +60,11 @@ NZDUSD  2       100.0  50.0   0.0            1.16
 USDCAD  2       100.0  50.0   0.0            1.15
 USDCHF  2       100.0  50.0   0.0            1.15
 
-By direction:
+By direction
 direction  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
       BUY  6        66.7  33.3 33.3            0.43
      SELL 11        72.7  54.5 27.3            0.57
+
+📎 Detailed results: audit-results.csv
 
 Saved data/audit-results.csv
