@@ -21,7 +21,27 @@ def _client():
     session = os.getenv("TG_SESSION")
     if not api_id or not api_hash or not session:
         raise RuntimeError("TG_API_ID, TG_API_HASH and TG_SESSION are required")
-    return TelegramClient(StringSession(session), int(api_id), api_hash)
+
+    # Accept a raw Telethon StringSession and tolerate accidental copying of
+    # the printed "TG_SESSION:" label or surrounding whitespace/quotes.
+    session = session.strip()
+    if session.startswith("TG_SESSION:"):
+        session = session.split(":", 1)[1].strip()
+    session = session.strip('"').strip("'").strip()
+
+    if len(session) < 50:
+        raise RuntimeError(
+            "TG_SESSION looks incomplete. Store only the long StringSession value "
+            "from Colab, without 'TG_SESSION:' or quotes."
+        )
+
+    try:
+        return TelegramClient(StringSession(session), int(api_id), api_hash)
+    except Exception as exc:
+        raise RuntimeError(
+            "TG_SESSION is not a valid Telethon StringSession. Regenerate it in "
+            "Colab and replace the GitHub secret with the raw session string."
+        ) from exc
 
 
 def _source():
