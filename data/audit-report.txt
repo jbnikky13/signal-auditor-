@@ -1,0 +1,45 @@
+SIGNAL AUDIT
+
+Outcomes:
+outcome
+TP2            8
+SL             5
+TP1_THEN_SL    4
+OPEN           2
+NO_DATA        1
+
+Decided signals: 17
+TP1 before SL: 70.6%   TP2 reached: 47.1%   SL first: 29.4%
+Expectancy, close all at TP1: +0.52R per trade
+Expectancy, hold to TP2 (orig SL): +0.53R per trade
+Provider's avg claimed 3D hit rate: n/a
+
+By score band:
+(no decided signals)
+
+By cross-market agreement:
+           xmkt  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
+agreement <100% 17        70.6  47.1 29.4            0.52
+
+By symbol:
+symbol  n  TP1_first%  TP2%   SL%  avgR(exit@TP1)
+AUDJPY  1       100.0 100.0   0.0            1.16
+AUDUSD  2        50.0  50.0  50.0            0.08
+COPPER  1       100.0   0.0   0.0            1.15
+   DXY  1         0.0   0.0 100.0           -1.00
+EURCHF  1         0.0   0.0 100.0           -1.00
+EURJPY  1       100.0 100.0   0.0            1.20
+EURUSD  1       100.0 100.0   0.0            1.15
+GBPJPY  1       100.0 100.0   0.0            1.15
+GBPUSD  1         0.0   0.0 100.0           -1.00
+NATGAS  1         0.0   0.0 100.0           -1.00
+NZDUSD  2       100.0  50.0   0.0            1.16
+USDCAD  2       100.0  50.0   0.0            1.15
+USDCHF  2       100.0  50.0   0.0            1.15
+
+By direction:
+direction  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
+      BUY  6        66.7  33.3 33.3            0.43
+     SELL 11        72.7  54.5 27.3            0.57
+
+Saved data/audit-results.csv
