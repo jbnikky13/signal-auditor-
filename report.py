@@ -23,12 +23,24 @@ def build():
     df = db.results_df()
     if df.empty:
         return "No settled signals yet."
+    # Normalize optional numeric fields before analytics. Telegram signals can
+    # legitimately omit a score, hit rate, or TP2.
+    for col in ["entry", "sl", "tp1", "tp2", "score", "agreement", "hit_rate"]:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+
     sl_d = (df.entry - df.sl).abs()
     df["tp1_r"] = (df.tp1 - df.entry).abs() / sl_d
     df["tp2_r"] = (df.tp2 - df.entry).abs() / sl_d
     df["r1"] = df.apply(lambda r: r.tp1_r if r.outcome in TP1_FIRST else (-1.0 if r.outcome == "SL" else None), axis=1)
     df["r2"] = df.apply(lambda r: r.tp2_r if r.outcome == "TP2" else (-1.0 if r.outcome in ("SL", "TP1_THEN_SL") else None), axis=1)
-    df["score_band"] = pd.cut(df.score, [0, 64, 69, 74, 100], labels=["<65", "65-69", "70-74", "75+"])
+    df["score_band"] = pd.cut(
+        df.score,
+        [-float("inf"), 64, 69, 74, float("inf")],
+        labels=["<65", "65-69", "70-74", "75+"],
+        include_lowest=True,
+    )
+    df.loc[df.score.isna(), "score_band"] = pd.NA
     df["xmkt"] = df.agreement.fillna(0).apply(lambda a: "agreement 100%" if a == 100 else "agreement <100%")
 
     dec = df[df.outcome.isin(DECIDED)]
@@ -42,7 +54,8 @@ def build():
             f"Expectancy, close all at TP1: {dec.r1.mean():+.2f}R per trade",
             f"Expectancy, hold to TP2 (orig SL): {dec.r2.dropna().mean():+.2f}R per trade"
             if dec.r2.notna().any() else "",
-            f"Provider's avg claimed 3D hit rate: {dec.hit_rate.mean():.1f}%", ""]
+            f"Provider's avg claimed 3D hit rate: {dec.hit_rate.mean():.1f}%"
+            if dec.hit_rate.notna().any() else "Provider's avg claimed 3D hit rate: n/a", ""]
     lines += ["By score band:", _table(df, "score_band"), "",
               "By cross-market agreement:", _table(df, "xmkt"), "",
               "By symbol:", _table(df, "symbol"), "",
