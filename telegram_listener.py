@@ -5,6 +5,7 @@ TG_CHANNEL (which may be a bot username such as @MercuryEdgeSignalsBot).
 """
 import asyncio
 import os
+import re
 from datetime import timezone
 
 from telethon import TelegramClient
@@ -69,6 +70,15 @@ async def _pull(limit):
             messages.append(msg)
 
         messages.reverse()
+        # Debug the message *shape* without exposing exact prices/IDs in public
+        # GitHub Actions logs. This is enabled by TG_DEBUG=1.
+        if os.getenv("TG_DEBUG") == "1":
+            print(f"Telegram debug: {len(messages)} text messages fetched")
+            for idx, msg in enumerate(messages[:20], 1):
+                shape = re.sub(r"\d+(?:\.\d+)?", "<NUM>", msg.message)
+                print(f"--- message {idx} id={msg.id} date={msg.date.isoformat()} ---")
+                print(shape[:4000])
+
         total = 0
 
         for msg in messages:
