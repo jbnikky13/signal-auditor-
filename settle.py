@@ -12,9 +12,9 @@ def pip_size(sym):
     return 0.01 if sym.endswith("JPY") else 0.0001
 
 
-def _res(outcome, final, **kw):
+def _res(outcome, final, note="", **kw):
     return dict(outcome=outcome, final=final, t_hit=None, mins=None, tp1_t=None,
-                mae_pips=None, mfe_pips=None, back_to_entry=None, note="", **kw)
+                mae_pips=None, mfe_pips=None, back_to_entry=None, note=note, **kw)
 
 
 def settle(sig, candles, spread_pips=1.0, max_hours=72, now=None):
