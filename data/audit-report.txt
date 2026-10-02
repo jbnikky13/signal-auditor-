@@ -1,3 +1,0 @@
-No settled signals yet.
-
-Saved data/audit-results.csv
