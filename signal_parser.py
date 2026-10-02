@@ -46,7 +46,7 @@ def _headline(text):
 
 def _target(patterns, block):
     for p in patterns:
-        value = _num(p + r"\\s*[\\.:=@-]?\\s*" + PRICE_RE, block)
+        value = _num(p + r"\s*[\.:=@-]?\s*" + PRICE_RE, block)
         if value is not None:
             return value
     return None
