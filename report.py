@@ -33,7 +33,7 @@ def _fmt_r(value):
 def build():
     df = db.results_df()
     if df.empty:
-        return "No settled signals yet."
+        return "📊 SIGNAL AUDITOR\n\nNo settled signals yet."
 
     for col in ["entry", "sl", "tp1", "tp2", "score", "agreement", "hit_rate"]:
         if col in df.columns:
@@ -43,12 +43,12 @@ def build():
     df["tp1_r"] = (df.tp1 - df.entry).abs() / sl_d
     df["tp2_r"] = (df.tp2 - df.entry).abs() / sl_d
     df["r1"] = df.apply(
-        lambda r: r.tp1_r if r.outcome in TP1_FIRST
-        else (-1.0 if r.outcome == "SL" else None), axis=1
+        lambda r: r.tp1_r if r.outcome in TP1_FIRST else (-1.0 if r.outcome == "SL" else None),
+        axis=1,
     )
     df["r2"] = df.apply(
-        lambda r: r.tp2_r if r.outcome == "TP2"
-        else (-1.0 if r.outcome in ("SL", "TP1_THEN_SL") else None), axis=1
+        lambda r: r.tp2_r if r.outcome == "TP2" else (-1.0 if r.outcome in ("SL", "TP1_THEN_SL") else None),
+        axis=1,
     )
     df["score_band"] = pd.cut(
         df.score,
@@ -58,7 +58,7 @@ def build():
     )
     df.loc[df.score.isna(), "score_band"] = pd.NA
     df["xmkt"] = df.agreement.fillna(0).apply(
-        lambda a: "agreement 100%" if a == 100 else "agreement <100%"
+        lambda a: "100%" if a == 100 else "<100%"
     )
 
     outcomes = df.outcome.value_counts()
@@ -69,17 +69,27 @@ def build():
     lines = [
         "📊 SIGNAL AUDITOR",
         "",
-        "PERFORMANCE",
+        "📌 SUMMARY",
         "────────────",
-        f"Signals ingested: {len(df)}",
-        f"Decided: {len(decided)}",
-        f"Open: {open_count}",
-        f"No market data: {no_data_count}",
+        f"Signals: {len(df)}   •   Decided: {len(decided)}",
+        f"Open: {open_count}   •   No data: {no_data_count}",
         "",
-        "Outcomes:",
-        outcomes.to_string(),
-        "",
+        "OUTCOMES",
+        "────────",
     ]
+
+    for outcome in ["TP2", "TP1_THEN_SL", "TP1_ONLY", "SL", "OPEN", "NO_DATA"]:
+        count = int(outcomes.get(outcome, 0))
+        if count:
+            label = {
+                "TP2": "TP2 reached",
+                "TP1_THEN_SL": "TP1 → SL",
+                "TP1_ONLY": "TP1 only",
+                "SL": "SL first",
+                "OPEN": "Still open",
+                "NO_DATA": "No market data",
+            }[outcome]
+            lines.append(f"{label}: {count}")
 
     if not decided.empty:
         tp1_first = int(decided.outcome.isin(TP1_FIRST).sum())
@@ -89,47 +99,48 @@ def build():
         r2 = decided.r2.dropna()
 
         lines += [
-            "SETTLEMENT",
-            "──────────",
+            "",
+            "📈 SETTLEMENT",
+            "────────────",
             f"TP1 before SL: {_pct(tp1_first, len(decided))}",
             f"TP2 reached: {_pct(tp2, len(decided))}",
             f"SL first: {_pct(sl_first, len(decided))}",
-            f"Expectancy @ TP1: {_fmt_r(r1.mean()) if not r1.empty else 'n/a'} / trade",
-            f"Expectancy @ TP2: {_fmt_r(r2.mean()) if not r2.empty else 'n/a'} / trade",
+            f"Expectancy @ TP1: {_fmt_r(r1.mean())} / trade",
+            f"Expectancy @ TP2: {_fmt_r(r2.mean())} / trade",
             f"Total simulated R @ TP1: {_fmt_r(r1.sum())}",
             f"Total simulated R @ TP2: {_fmt_r(r2.sum())}",
-            "",
         ]
 
-        claimed = decided.hit_rate.dropna()
-        lines += [
-            "PROVIDER METRICS",
-            "────────────────",
-            f"Claimed 3D hit rate available: {len(claimed)}/{len(decided)}",
-            f"Provider avg claimed 3D hit rate: {claimed.mean():.1f}%"
-            if not claimed.empty else
-            "Provider avg claimed 3D hit rate: n/a",
-            "",
-        ]
-
+    claimed = decided.hit_rate.dropna()
     lines += [
-        "DATA QUALITY",
-        "────────────",
+        "",
+        "🧾 PROVIDER DATA",
+        "────────────────",
+        f"Claimed 3D hit rate: {len(claimed)}/{len(decided)} signals available",
+        f"Provider average: {claimed.mean():.1f}%" if not claimed.empty else "Provider average: n/a",
+        "",
+        "🔎 DATA QUALITY",
+        "──────────────",
         f"Missing score: {int(df.score.isna().sum())}/{len(df)}",
         f"Missing TP2: {int(df.tp2.isna().sum())}/{len(df)}",
         f"Missing claimed hit rate: {int(df.hit_rate.isna().sum())}/{len(df)}",
         "",
-        "BY SCORE BAND",
+        "📊 BREAKDOWNS",
+        "─────────────",
+        "",
+        "By score band",
         _table(df, "score_band"),
         "",
-        "BY CROSS-MARKET AGREEMENT",
+        "By cross-market agreement",
         _table(df, "xmkt"),
         "",
-        "BY SYMBOL",
+        "By symbol",
         _table(df, "symbol"),
         "",
-        "BY DIRECTION",
+        "By direction",
         _table(df, "direction"),
+        "",
+        "📎 Detailed results: audit-results.csv",
     ]
     return "\n".join(str(x) for x in lines if x is not None)
 
