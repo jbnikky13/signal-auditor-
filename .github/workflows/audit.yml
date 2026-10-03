@@ -28,7 +28,7 @@ jobs:
     env:
       EXPORT_TZ: ${{ vars.EXPORT_TZ || 'Africa/Lagos' }}
       SPREAD_PIPS: ${{ vars.SPREAD_PIPS || '1.0' }}
-      MAX_HOURS: ${{ vars.MAX_HOURS || '72' }}
+      MAX_HOURS: "24"
       TG_API_ID: ${{ secrets.TG_API_ID }}
       TG_API_HASH: ${{ secrets.TG_API_HASH }}
       TG_CHANNEL: ${{ secrets.TG_CHANNEL }}
