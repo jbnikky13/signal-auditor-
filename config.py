@@ -22,7 +22,11 @@ YAHOO_MAP = {
     "NATGAS": "NG=F", "USOIL": "CL=F", "UKOIL": "BZ=F",
     "XAUUSD": "GC=F", "XAGUSD": "SI=F", "COPPER": "HG=F",
     "DXY": "DX-Y.NYB", "US30": "YM=F", "NAS100": "NQ=F", "SPX500": "ES=F",
+    # Names MercuryEdge actually sends. Without these they fell through to
+    # f"{SYM}=X" (e.g. "VIX=X"), which Yahoo has no candles for.
+    "VIX": "^VIX", "SPX": "^GSPC", "NASDAQ": "^NDX", "DJI": "^DJI",
 }
 # Price units per "pip" for non-FX symbols
 PIP = {"NATGAS": 0.001, "USOIL": 0.01, "UKOIL": 0.01, "XAUUSD": 0.1,
-       "XAGUSD": 0.01, "COPPER": 0.001}
+       "XAGUSD": 0.01, "COPPER": 0.001,
+       "DXY": 0.01, "VIX": 0.01, "SPX": 1.0, "NASDAQ": 1.0, "DJI": 1.0}
