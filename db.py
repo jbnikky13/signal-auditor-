@@ -2,6 +2,7 @@ import sqlite3
 from contextlib import contextmanager
 import pandas as pd
 from config import DB_PATH
+from signal_parser import levels_ok
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS signals(
@@ -81,3 +82,15 @@ def results_df():
             "SELECT s.*, r.outcome, r.final, r.t_hit_utc, r.mins, r.tp1_t_utc, r.mae_pips, "
             "r.mfe_pips, r.back_to_entry, r.note FROM signals s "
             "JOIN results r ON r.signal_id=s.id ORDER BY s.ts_utc", con)
+
+
+def purge_invalid():
+    """Delete signals whose levels are impossible (e.g. TP1 == entry), such as
+    rows created by the old comma-parsing bug, along with their results."""
+    with connect() as con:
+        rows = con.execute("SELECT id, direction, entry, tp1, tp2, sl FROM signals").fetchall()
+        bad = [r["id"] for r in rows if not levels_ok(r["direction"], r["entry"], r["tp1"], r["tp2"], r["sl"])]
+        for i in bad:
+            con.execute("DELETE FROM results WHERE signal_id=?", (i,))
+            con.execute("DELETE FROM signals WHERE id=?", (i,))
+    return len(bad)

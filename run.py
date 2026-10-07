@@ -24,6 +24,9 @@ def cmd_ingest(a):
 
 
 def cmd_settle(a):
+    purged = db.purge_invalid()
+    if purged:
+        print(f"Removed {purged} signal(s) with invalid levels")
     sigs = db.open_signals(redo=a.redo)
     if not sigs:
         print("Nothing to settle")
