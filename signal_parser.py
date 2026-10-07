@@ -3,11 +3,28 @@ import re
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-PRICE_RE = r"([0-9]+(?:\.[0-9]+)?)"
+# Accepts plain (1.2345, 7050.5) and thousands-separated (7,050.25) prices.
+# The old pattern stopped at the comma, so "7,050" was read as 7.
+PRICE_RE = r"([0-9]{1,3}(?:,[0-9]{3})+(?:\.[0-9]+)?|[0-9]+(?:\.[0-9]+)?)"
+
+
+def _f(s):
+    return float(s.replace(",", ""))
+
+
+def levels_ok(direction, entry, tp1, tp2, sl):
+    """True only if SL < entry < TP1 < TP2 (BUY) or the reverse (SELL)."""
+    if entry is None or tp1 is None or sl is None:
+        return False
+    chain = [sl, entry, tp1] + ([tp2] if tp2 is not None else [])
+    pairs = list(zip(chain, chain[1:]))
+    if str(direction).upper() == "BUY":
+        return all(a < b for a, b in pairs)
+    return all(a > b for a, b in pairs)
 
 def _num(pattern, text):
     m = re.search(pattern, text, re.I | re.M)
-    return float(m.group(1)) if m else None
+    return _f(m.group(1)) if m else None
 
 def _int(pattern, text):
     m = re.search(pattern, text, re.I | re.M)
@@ -42,7 +59,7 @@ def _headline(text):
         text,
         re.I,
     )
-    return (m.group(1).upper(), m.group(2).upper(), float(m.group(3))) if m else None
+    return (m.group(1).upper(), m.group(2).upper(), _f(m.group(3))) if m else None
 
 def _target(patterns, block):
     for p in patterns:
@@ -85,6 +102,10 @@ def parse_export(text, tz="Africa/Lagos"):
         if tp1 is None and tp2 is not None:
             tp1, tp2 = tp2, None
         if tp1 is None or sl is None:
+            continue
+        if not levels_ok(direction, entry, tp1, tp2, sl):
+            print(f"[warn] skipped invalid levels: {direction} {symbol} "
+                  f"entry={entry} tp1={tp1} tp2={tp2} sl={sl}")
             continue
 
         hit_rate = _num(r"\b(?:HIT\s*RATE|WIN\s*RATE)\s*[:=]?\s*" + PRICE_RE, block)
