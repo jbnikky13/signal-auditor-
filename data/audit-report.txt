@@ -2,43 +2,45 @@
 
 📌 SUMMARY
 ────────────
-Signals: 39   •   Decided: 36
-Open: 0   •   No data: 0
+Signals: 46   •   Decided: 37
+Open: 4   •   No data: 2
 
 OUTCOMES
 ────────
 TP2 reached: 11
-TP1 → SL: 6
-TP1 only: 5
-SL first: 14
+TP1 → SL: 7
+TP1 only: 4
+SL first: 15
+Still open: 4
+No market data: 2
 
 📈 SETTLEMENT
 ────────────
-TP1 before SL: 61.1%
-TP2 reached: 30.6%
-SL first: 38.9%
-Expectancy @ TP1: +0.32R / trade
-Expectancy @ TP2: +0.16R / trade
-Total simulated R @ TP1: +11.35R
-Total simulated R @ TP2: +4.83R
+TP1 before SL: 59.5%
+TP2 reached: 29.7%
+SL first: 40.5%
+Expectancy @ TP1: +0.28R / trade
+Expectancy @ TP2: +0.09R / trade
+Total simulated R @ TP1: +10.35R
+Total simulated R @ TP2: +2.83R
 
 🧾 PROVIDER DATA
 ────────────────
-Claimed 3D hit rate: 36/36 signals available
-Provider average: 67.2%
+Claimed 3D hit rate: 37/37 signals available
+Provider average: 67.4%
 
 🔎 DATA QUALITY
 ──────────────
-Missing score: 0/39
-Missing TP2: 0/39
-Missing claimed hit rate: 0/39
+Missing score: 0/46
+Missing TP2: 0/46
+Missing claimed hit rate: 0/46
 
 📊 BREAKDOWNS
 ─────────────
 
 By score band
 score_band  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
-       <65  2        50.0   0.0 50.0            0.08
+       <65  3        33.3   0.0 66.7           -0.28
      65-69 23        60.9  34.8 39.1            0.31
      70-74  6        66.7  16.7 33.3            0.43
        75+  5        60.0  40.0 40.0            0.29
@@ -46,7 +48,7 @@ score_band  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
 By cross-market agreement
  xmkt  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
  100% 10        60.0  30.0 40.0            0.29
-<100% 26        61.5  30.8 38.5            0.32
+<100% 27        59.3  29.6 40.7            0.28
 
 By symbol
 symbol  n  TP1_first%  TP2%   SL%  avgR(exit@TP1)
@@ -54,7 +56,7 @@ AUDJPY  1       100.0 100.0   0.0            1.16
 AUDUSD  2        50.0  50.0  50.0            0.08
 COPPER  1       100.0   0.0   0.0            1.15
    DJI  1         0.0   0.0 100.0           -1.00
-   DXY  1         0.0   0.0 100.0           -1.00
+   DXY  2         0.0   0.0 100.0           -1.00
 EURCHF  1         0.0   0.0 100.0           -1.00
 EURGBP  2       100.0  50.0   0.0            1.14
 EURJPY  2       100.0  50.0   0.0            1.16
@@ -73,7 +75,7 @@ XAUUSD  1         0.0   0.0 100.0           -1.00
 
 By direction
 direction  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
-      BUY 16        62.5  25.0 37.5            0.34
+      BUY 17        58.8  23.5 41.2            0.26
      SELL 20        60.0  35.0 40.0            0.29
 
 📎 Detailed results: audit-results.csv
