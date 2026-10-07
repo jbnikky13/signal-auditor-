@@ -15,7 +15,7 @@ on:
       - ".github/workflows/audit.yml"
 
 permissions:
-  contents: read
+  contents: write   # needed to save data/audit.db back to the repo
 
 concurrency:
   group: signal-auditor
@@ -28,7 +28,7 @@ jobs:
     env:
       EXPORT_TZ: ${{ vars.EXPORT_TZ || 'Africa/Lagos' }}
       SPREAD_PIPS: ${{ vars.SPREAD_PIPS || '1.0' }}
-      MAX_HOURS: "24"
+      MAX_HOURS: "72"
       TG_API_ID: ${{ secrets.TG_API_ID }}
       TG_API_HASH: ${{ secrets.TG_API_HASH }}
       TG_CHANNEL: ${{ secrets.TG_CHANNEL }}
@@ -73,6 +73,19 @@ jobs:
         run: |
           mkdir -p data
           python run.py report --csv data/audit-results.csv | tee data/audit-report.txt
+
+      - name: Save audit database
+        run: |
+          git config user.name "signal-auditor[bot]"
+          git config user.email "signal-auditor@users.noreply.github.com"
+          git add -f data/audit.db data/audit-results.csv data/audit-report.txt
+          if git diff --cached --quiet; then
+            echo "No changes to save"
+          else
+            git commit -m "Update audit data [skip ci]"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
 
       - name: Send audit results to MercuryEdge Telegram bot
         if: ${{ env.BOT_TOKEN != '' && env.BOT_CHAT_ID != '' }}
