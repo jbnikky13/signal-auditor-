@@ -35,7 +35,13 @@ def connect():
         con.close()
 
 
+META = ["batch", "setup_no", "score", "hit_rate", "analogues", "regime", "confirmation", "agreement"]
+
+
 def insert_signals(sigs):
+    """Insert new signals. For signals already stored, back-fill/correct the
+    descriptive fields (score, hit rate, regime, ...) without touching levels
+    or results. A None never overwrites an existing value."""
     n = 0
     with connect() as con:
         for s in sigs:
@@ -43,6 +49,10 @@ def insert_signals(sigs):
                 f"INSERT OR IGNORE INTO signals({','.join(COLS)}) VALUES({','.join('?'*len(COLS))})",
                 [s.get(c) for c in COLS])
             n += cur.rowcount
+            con.execute(
+                "UPDATE signals SET " + ",".join(f"{c}=COALESCE(?,{c})" for c in META) +
+                " WHERE ts_utc=? AND symbol=? AND direction=? AND entry=?",
+                [s.get(c) for c in META] + [s["ts_utc"], s["symbol"], s["direction"], s["entry"]])
     return n
 
 
