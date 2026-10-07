@@ -60,7 +60,11 @@ def insert_signals(sigs):
 def open_signals(redo=False):
     q = "SELECT s.* FROM signals s LEFT JOIN results r ON r.signal_id=s.id"
     if not redo:
-        q += " WHERE r.signal_id IS NULL OR r.final=0"
+        # Besides unsettled signals, retry data failures (not real outcomes) while
+        # Yahoo's ~7-day window still covers them, so saving the DB never locks them in.
+        q += (" WHERE r.signal_id IS NULL OR r.final=0 OR (r.outcome IN "
+              "('NO_DATA','DATA_GAP','DATA_MISMATCH') AND "
+              "s.ts_utc > strftime('%Y-%m-%dT%H:%M:%S','now','-6 days'))")
     with connect() as con:
         return [dict(r) for r in con.execute(q + " ORDER BY s.ts_utc")]
 
