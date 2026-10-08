@@ -2,8 +2,8 @@
 
 📌 SUMMARY
 ────────────
-Signals: 46   •   Decided: 41
-Open: 0   •   No data: 2
+Signals: 50   •   Decided: 41
+Open: 3   •   No data: 3
 
 OUTCOMES
 ────────
@@ -11,7 +11,8 @@ TP2 reached: 12
 TP1 → SL: 7
 TP1 only: 4
 SL first: 18
-No market data: 2
+Still open: 3
+No market data: 3
 
 📈 SETTLEMENT
 ────────────
@@ -30,9 +31,9 @@ Provider average: 67.7%
 
 🔎 DATA QUALITY
 ──────────────
-Missing score: 0/46
-Missing TP2: 0/46
-Missing claimed hit rate: 0/46
+Missing score: 0/50
+Missing TP2: 0/50
+Missing claimed hit rate: 0/50
 
 📊 BREAKDOWNS
 ─────────────
