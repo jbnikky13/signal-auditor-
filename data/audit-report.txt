@@ -2,32 +2,31 @@
 
 📌 SUMMARY
 ────────────
-Signals: 50   •   Decided: 43
-Open: 1   •   No data: 3
+Signals: 50   •   Decided: 44
+Open: 0   •   No data: 3
 
 OUTCOMES
 ────────
 TP2 reached: 12
 TP1 → SL: 7
-TP1 only: 4
+TP1 only: 5
 SL first: 20
-Still open: 1
 No market data: 3
 
 📈 SETTLEMENT
 ────────────
-TP1 before SL: 53.5%
-TP2 reached: 27.9%
-SL first: 46.5%
-Expectancy @ TP1: +0.15R / trade
+TP1 before SL: 54.5%
+TP2 reached: 27.3%
+SL first: 45.5%
+Expectancy @ TP1: +0.17R / trade
 Expectancy @ TP2: +0.00R / trade
-Total simulated R @ TP1: +6.50R
+Total simulated R @ TP1: +7.65R
 Total simulated R @ TP2: +0.08R
 
 🧾 PROVIDER DATA
 ────────────────
-Claimed 3D hit rate: 43/43 signals available
-Provider average: 67.5%
+Claimed 3D hit rate: 44/44 signals available
+Provider average: 66.8%
 
 🔎 DATA QUALITY
 ──────────────
@@ -40,7 +39,7 @@ Missing claimed hit rate: 0/50
 
 By score band
 score_band  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
-       <65  5        20.0   0.0 80.0           -0.57
+       <65  6        33.3   0.0 66.7           -0.28
      65-69 27        55.6  33.3 44.4            0.20
      70-74  6        66.7  16.7 33.3            0.43
        75+  5        60.0  40.0 40.0            0.29
@@ -48,7 +47,7 @@ score_band  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
 By cross-market agreement
  xmkt  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
  100% 10        60.0  30.0 40.0            0.29
-<100% 33        51.5  27.3 48.5            0.11
+<100% 34        52.9  26.5 47.1            0.14
 
 By symbol
 symbol  n  TP1_first%  TP2%   SL%  avgR(exit@TP1)
@@ -57,7 +56,7 @@ AUDUSD  2        50.0  50.0  50.0            0.08
 COPPER  1       100.0   0.0   0.0            1.15
    DJI  1         0.0   0.0 100.0           -1.00
    DXY  2         0.0   0.0 100.0           -1.00
-EURCHF  1         0.0   0.0 100.0           -1.00
+EURCHF  2        50.0   0.0  50.0            0.08
 EURGBP  2       100.0  50.0   0.0            1.14
 EURJPY  3        66.7  33.3  33.3            0.44
 EURUSD  1       100.0 100.0   0.0            1.15
@@ -77,7 +76,7 @@ XAUUSD  1         0.0   0.0 100.0           -1.00
 By direction
 direction  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
       BUY 18        61.1  27.8 38.9            0.31
-     SELL 25        48.0  28.0 52.0            0.03
+     SELL 26        50.0  26.9 50.0            0.08
 
 📎 Detailed results: audit-results.csv
 
