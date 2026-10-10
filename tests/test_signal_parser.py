@@ -1,6 +1,9 @@
 from datetime import datetime, timezone
 
+import pandas as pd
+
 import db
+from report import _table
 from signal_parser import parse_export
 
 
@@ -54,3 +57,17 @@ def test_batch_is_persisted_in_database_for_each_batch(tmp_path, monkeypatch):
     assert inserted == 4
     rows = db.open_signals()
     assert {row["batch"] for row in rows} == set(BATCHES)
+
+
+def test_performance_table_can_break_down_settled_outcomes_by_batch():
+    frame = pd.DataFrame(
+        [
+            {"batch": "OVERNIGHT", "outcome": "TP2", "r1": 1.0},
+            {"batch": "MORNING", "outcome": "SL", "r1": -1.0},
+            {"batch": "AFTERNOON", "outcome": "TP1_ONLY", "r1": 1.0},
+            {"batch": "EVENING", "outcome": "SL", "r1": -1.0},
+        ]
+    )
+    table = _table(frame, "batch")
+    for batch in BATCHES:
+        assert batch in table
