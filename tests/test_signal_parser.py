@@ -87,3 +87,11 @@ def test_performance_table_can_break_down_settled_outcomes_by_batch():
     table = _table(frame, "batch")
     for batch in BATCHES:
         assert batch in table
+
+
+def test_nasdaq_auditor_feed_matches_mercuryedge_production_instrument():
+    from market_data import resolve_ticker
+
+    assert resolve_ticker("NASDAQ") == "^IXIC"
+    assert resolve_ticker("^IXIC") == "^IXIC"
+    assert resolve_ticker("NAS100") == "^NDX"
