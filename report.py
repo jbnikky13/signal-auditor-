@@ -3,16 +3,20 @@ import db
 
 TP1_FIRST = {"TP2", "TP1_THEN_SL", "TP1_ONLY"}
 DECIDED = TP1_FIRST | {"SL"}
+QUALITY_OUTCOMES = {
+    "NO_DATA", "DATA_GAP", "DATA_MISMATCH", "NO_RESOLUTION",
+    "AMBIGUOUS_SL_TP1_SAME_CANDLE", "TP1_THEN_AMBIGUOUS",
+}
 
 
 def _table(df, col):
     rows = []
-    for k, g in df.groupby(col, observed=True):
+    for k, g in df.groupby(col, observed=True, dropna=False):
         d = g[g.outcome.isin(DECIDED)]
         if d.empty:
             continue
         rows.append({
-            col: k,
+            col: "(missing)" if pd.isna(k) else k,
             "n": len(d),
             "TP1_first%": round(100 * d.outcome.isin(TP1_FIRST).mean(), 1),
             "TP2%": round(100 * (d.outcome == "TP2").mean(), 1),
@@ -20,6 +24,11 @@ def _table(df, col):
             "avgR(exit@TP1)": round(d.r1.mean(), 2),
         })
     return pd.DataFrame(rows).to_string(index=False) if rows else "(no decided signals)"
+
+
+def _quality_counts(df):
+    """Count records excluded from strategy performance due to unresolved or unsafe data."""
+    return {outcome: int((df["outcome"] == outcome).sum()) for outcome in sorted(QUALITY_OUTCOMES)}
 
 
 def _pct(n, d):
@@ -64,7 +73,7 @@ def build():
     outcomes = df.outcome.value_counts()
     decided = df[df.outcome.isin(DECIDED)]
     open_count = int((df.outcome == "OPEN").sum())
-    no_data_count = int((df.outcome == "NO_DATA").sum())
+    quality = _quality_counts(df)
 
     lines = [
         "📊 SIGNAL AUDITOR",
@@ -72,23 +81,28 @@ def build():
         "📌 SUMMARY",
         "────────────",
         f"Signals: {len(df)}   •   Decided: {len(decided)}",
-        f"Open: {open_count}   •   No data: {no_data_count}",
+        f"Open: {open_count}   •   Excluded from performance: {sum(quality.values())}",
         "",
         "OUTCOMES",
         "────────",
     ]
 
-    for outcome in ["TP2", "TP1_THEN_SL", "TP1_ONLY", "SL", "OPEN", "NO_DATA"]:
+    labels = {
+        "TP2": "TP2 reached",
+        "TP1_THEN_SL": "TP1 → SL",
+        "TP1_ONLY": "TP1 only",
+        "SL": "SL first",
+        "OPEN": "Still open",
+        "NO_DATA": "No market data",
+        "DATA_GAP": "Data gap",
+        "DATA_MISMATCH": "Price-feed mismatch (excluded)",
+        "NO_RESOLUTION": "No resolution within horizon",
+        "AMBIGUOUS_SL_TP1_SAME_CANDLE": "Ambiguous SL/TP1 same candle",
+        "TP1_THEN_AMBIGUOUS": "Ambiguous SL/TP2 after TP1",
+    }
+    for outcome, label in labels.items():
         count = int(outcomes.get(outcome, 0))
         if count:
-            label = {
-                "TP2": "TP2 reached",
-                "TP1_THEN_SL": "TP1 → SL",
-                "TP1_ONLY": "TP1 only",
-                "SL": "SL first",
-                "OPEN": "Still open",
-                "NO_DATA": "No market data",
-            }[outcome]
             lines.append(f"{label}: {count}")
 
     if not decided.empty:
@@ -124,6 +138,7 @@ def build():
         f"Missing score: {int(df.score.isna().sum())}/{len(df)}",
         f"Missing TP2: {int(df.tp2.isna().sum())}/{len(df)}",
         f"Missing claimed hit rate: {int(df.hit_rate.isna().sum())}/{len(df)}",
+        f"Excluded outcomes: {sum(quality.values())}",
         "",
         "📊 BREAKDOWNS",
         "─────────────",
