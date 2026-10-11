@@ -15,7 +15,9 @@ SYMBOLS = {
     "NZDUSD": "NZDUSD=X", "USDCAD": "CAD=X", "USDCHF": "CHF=X",
     "USDJPY": "JPY=X", "CADJPY": "CADJPY=X",
     "SPX": "^GSPC", "DJI": "^DJI", "VIX": "^VIX", "DXY": "DX-Y.NYB",
-    "RUSSELL2000": "^RUT", "NASDAQ": "^NDX",
+    # MercuryEdge's production config uses ^IXIC (Nasdaq Composite) for NASDAQ.
+    # Keep NAS100 as the separate Nasdaq-100 instrument (^NDX).
+    "RUSSELL2000": "^RUT", "NASDAQ": "^IXIC",
     "US30": "^DJI", "NAS100": "^NDX", "SPX500": "^GSPC",
     "XAUUSD": "GC=F", "XAGUSD": "SI=F", "NATGAS": "NG=F",
     "UKOIL": "BZ=F", "USOIL": "CL=F", "COPPER": "HG=F",
@@ -100,7 +102,7 @@ def get_live_price(symbol):
 def feed_agrees(symbol, entry, live=None):
     live = get_live_price(symbol) if live is None else live
     try:
-        return live is not None and abs(float(live) - float(entry)) / float(live) <= MAX_ENTRY_DEVIATION
+        return live is not None and abs(float(live) - float(entry)) / abs(float(live)) <= MAX_ENTRY_DEVIATION
     except (TypeError, ValueError, ZeroDivisionError):
         return False
 
