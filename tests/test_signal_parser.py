@@ -16,16 +16,32 @@ def make_message(batch):
 ━━━━━━━━━━━━━━━━━━━━
 SETUP #1
 BUY EURUSD @ 1.1000
-TP1: 1.1100
-TP2: 1.1200
-SL: 1.0900
-SCORE: 78/100
-HIT RATE: 62%
-ANALOGUES: 55
-REGIME: BULLISH / NORMAL
+TP1. 1.1100
+TP2. 1.1200
+SL. 1.0900
+
+R:R 1:1.0 / 1:2.0
+TREND. BULLISH
+SETUP. BREAKOUT
+SCORE. 78/100
+
+HISTORICAL INTELLIGENCE
+3D HIT RATE: 62.0%
+Analogues. 55
+Regime. BULLISH / NORMAL
+Pattern. TUESDAY + month 10
+History modifier. +2
+
+CROSS-MARKET INTELLIGENCE
 CONFIRMATION: +1
-Timestamp: 2026-10-09 10:30
-Paper/research signals only.
+AGREEMENT: 60%
+EVIDENCE: DXY inverse
+ADAPTIVE MODIFIER: +2
+
+Historical/cross-market behavior is evidence, not a guarantee.
+MANAGE RISK ⚠️
+━━━━━━━━━━━━━━━━━━━━
+Paper/research signals only • MANAGE RISK ⚠️
 """
 
 
