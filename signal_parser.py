@@ -13,7 +13,7 @@ SEP = r"\s*[\.:=@-]?\s*"
 SEP_NUM = r"\s*[\.:=]?\s*"   # no "-" here, so it can't swallow a minus sign
 
 SETUP_MARK = re.compile(r"^\s*SETUP\s*#\s*(\d+)", re.I)
-BATCH_RE = re.compile(r"\b(MORNING|AFTERNOON|EVENING)\b", re.I)
+BATCH_RE = re.compile(r"\b(OVERNIGHT|MORNING|AFTERNOON|EVENING)\b", re.I)
 
 
 def _f(s):

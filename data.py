@@ -25,16 +25,15 @@ def _merge(a, b):
 
 
 def fetch_yahoo(sym):
-    import yfinance as yf
-    ticker = config.YAHOO_MAP.get(sym, f"{sym}=X")
-    df = yf.download(ticker, period="7d", interval="1m", progress=False, auto_adjust=False)
-    if df is None or df.empty:
+    """Use the same canonical ticker map and candle provider as MercuryEdge."""
+    from datetime import datetime, timedelta, timezone
+    from market_data import get_candles
+    end = datetime.now(timezone.utc)
+    frame = get_candles(sym, end - timedelta(days=7), end, interval="1m")
+    if frame is None or frame.empty:
         return pd.DataFrame(columns=KEEP)
-    if isinstance(df.columns, pd.MultiIndex):
-        df.columns = df.columns.get_level_values(0)
-    df = df[KEEP].dropna()
-    df.index = _utc_index(df.index)
-    return df
+    frame = frame.rename(columns={c: c.capitalize() for c in frame.columns})
+    return frame[KEEP].dropna()
 
 
 def load(sym, refresh=True):
