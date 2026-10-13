@@ -1,0 +1,15 @@
+record_id,symbol,signal_time_utc,prior_outcome,prior_tp1_time_utc,prior_resolution_time_utc,provisional_24h_review,review_status,rationale
+11,USDCAD,2026-09-30T18:31:04Z,TP1_THEN_SL,2026-10-01T03:23:00Z,2026-10-02T06:07:00Z,TP1_ONLY,PROVISIONAL_TIMESTAMP_REVIEW,TP1 timestamp is before 24h cutoff; later SL is outside horizon
+124,GBPJPY,2026-10-02T14:52:04Z,SL,,2026-10-05T06:37:00Z,NO_RESOLUTION,PROVISIONAL_TIMESTAMP_REVIEW,Recorded SL is after 24h cutoff; candle coverage still needs verification
+121,VIX,2026-10-02T14:52:04Z,SL,,2026-10-05T07:15:00Z,NO_RESOLUTION,PROVISIONAL_TIMESTAMP_REVIEW,Recorded SL is after 24h cutoff; candle coverage still needs verification
+127,EURGBP,2026-10-02T18:35:59Z,TP2,2026-10-05T01:22:00Z,2026-10-05T02:28:00Z,NO_RESOLUTION,PROVISIONAL_TIMESTAMP_REVIEW,TP1 and TP2 timestamps are after 24h cutoff
+128,SPX,2026-10-02T18:35:59Z,TP1_ONLY,2026-10-05T14:20:00Z,,NO_RESOLUTION,PROVISIONAL_TIMESTAMP_REVIEW,Recorded TP1 is after 24h cutoff
+126,UKOIL,2026-10-02T18:35:59Z,SL,,2026-10-05T02:04:00Z,NO_RESOLUTION,PROVISIONAL_TIMESTAMP_REVIEW,Recorded SL is after 24h cutoff; candle coverage still needs verification
+125,USDCAD,2026-10-02T18:35:59Z,TP1_THEN_SL,2026-10-05T02:52:00Z,2026-10-05T09:10:00Z,NO_RESOLUTION,PROVISIONAL_TIMESTAMP_REVIEW,TP1 and SL timestamps are after 24h cutoff
+219,RUSSELL2000,2026-10-07T15:41:07Z,TP1_THEN_SL,2026-10-08T14:55:00Z,2026-10-09T14:00:00Z,TP1_ONLY,PROVISIONAL_TIMESTAMP_REVIEW,TP1 timestamp is before 24h cutoff; later SL is outside horizon
+517,DXY,2026-10-09T15:28:03Z,SL,,2026-10-12T00:12:00Z,NO_RESOLUTION,PROVISIONAL_TIMESTAMP_REVIEW,Recorded SL is after 24h cutoff; candle coverage still needs verification
+519,COPPER,2026-10-09T18:55:12Z,TP2,2026-10-12T01:05:00Z,2026-10-12T09:25:00Z,NO_RESOLUTION,PROVISIONAL_TIMESTAMP_REVIEW,TP1 and TP2 timestamps are after 24h cutoff
+520,DXY,2026-10-09T18:55:12Z,SL,,2026-10-12T00:12:00Z,NO_RESOLUTION,PROVISIONAL_TIMESTAMP_REVIEW,Recorded SL is after 24h cutoff; candle coverage still needs verification
+123,NASDAQ,2026-10-02T14:52:04Z,DATA_MISMATCH,,,DATA_MISMATCH,EXCLUDED_FEED_IDENTITY_UNRESOLVED,Auditor quote ~30924.23 differs materially from signal entry 27312.69; signal likely references a different Nasdaq instrument or provider
+129,NASDAQ,2026-10-05T17:17:16Z,DATA_MISMATCH,,,DATA_MISMATCH,EXCLUDED_FEED_IDENTITY_UNRESOLVED,Auditor quote ~31019.50 differs materially from signal entry 27438.95; signal likely references a different Nasdaq instrument or provider
+1223,CADJPY,2026-10-13T06:56:33Z,SL,,2026-10-13T08:45:00Z,SL_PENDING_CANDLE_REVIEW,RECONCILIATION_REQUIRED,Entry and stop closely match MercuryEdge 2026-10-13 06:00 UTC CADJPY SELL journal setup, but Signal Auditor timestamp is 56m33s later; confirm original publication time and candle path before treating as same record
