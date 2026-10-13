@@ -17,7 +17,9 @@ def _res(outcome, final, note="", **kw):
                 mae_pips=None, mfe_pips=None, back_to_entry=None, note=note, **kw)
 
 
-def settle(sig, candles, spread_pips=1.0, max_hours=72, now=None):
+def settle(sig, candles, spread_pips=1.0, max_hours=None, now=None):
+    # Follow the single configured horizon unless a test or caller explicitly overrides it.
+    max_hours = config.MAX_HOURS if max_hours is None else float(max_hours)
     now = now or pd.Timestamp.now(tz="UTC")
     ts = pd.Timestamp(sig["ts_utc"])
     ts = ts.tz_localize("UTC") if ts.tzinfo is None else ts.tz_convert("UTC")

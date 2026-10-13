@@ -13,7 +13,7 @@ CANDLE_DIR.mkdir(exist_ok=True)
 
 EXPORT_TZ = os.getenv("EXPORT_TZ", "Africa/Lagos")
 SPREAD_PIPS = float(os.getenv("SPREAD_PIPS", "1.0"))
-MAX_HOURS = float(os.getenv("MAX_HOURS", "72"))
+MAX_HOURS = float(os.getenv("MAX_HOURS", "24"))
 MISMATCH_SL_MULT = float(os.getenv("MISMATCH_SL_MULT", "1.5"))  # candle vs entry sanity check
 MAX_DATA_GAP_MIN = 15
 
