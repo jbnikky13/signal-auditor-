@@ -2,7 +2,7 @@
 
 📌 SUMMARY
 ────────────
-Signals: 54   •   Decided: 52
+Signals: 55   •   Decided: 53
 Open: 0   •   Excluded from performance: 2
 
 OUTCOMES
@@ -10,29 +10,29 @@ OUTCOMES
 TP2 reached: 15
 TP1 → SL: 8
 TP1 only: 4
-SL first: 25
+SL first: 26
 Price-feed mismatch (excluded): 2
 
 📈 SETTLEMENT
 ────────────
-TP1 before SL: 51.9%
-TP2 reached: 28.8%
-SL first: 48.1%
-Expectancy @ TP1: +0.12R / trade
-Expectancy @ TP2: +0.02R / trade
-Total simulated R @ TP1: +6.10R
-Total simulated R @ TP2: +0.84R
+TP1 before SL: 50.9%
+TP2 reached: 28.3%
+SL first: 49.1%
+Expectancy @ TP1: +0.10R / trade
+Expectancy @ TP2: -0.00R / trade
+Total simulated R @ TP1: +5.10R
+Total simulated R @ TP2: -0.16R
 
 🧾 PROVIDER DATA
 ────────────────
-Claimed 3D hit rate: 52/52 signals available
-Provider average: 67.0%
+Claimed 3D hit rate: 53/53 signals available
+Provider average: 67.1%
 
 🔎 DATA QUALITY
 ──────────────
-Missing score: 0/54
-Missing TP2: 0/54
-Missing claimed hit rate: 0/54
+Missing score: 0/55
+Missing TP2: 0/55
+Missing claimed hit rate: 0/55
 Excluded outcomes: 2
 
 📊 BREAKDOWNS
@@ -43,22 +43,24 @@ score_band  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
        <65  9        22.2  11.1 77.8           -0.52
      65-69 32        56.2  34.4 43.8            0.21
      70-74  6        66.7  16.7 33.3            0.43
-       75+  5        60.0  40.0 40.0            0.29
+       75+  6        50.0  33.3 50.0            0.08
 
 By cross-market agreement
  xmkt  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
  100% 11        63.6  36.4 36.4            0.37
-<100% 41        48.8  26.8 51.2            0.05
+<100% 42        47.6  26.2 52.4            0.02
 
 By batch
-    batch  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
-AFTERNOON 21        42.9  19.0 57.1           -0.08
-  EVENING 31        58.1  35.5 41.9            0.25
+    batch  n  TP1_first%  TP2%   SL%  avgR(exit@TP1)
+AFTERNOON 21        42.9  19.0  57.1           -0.08
+  EVENING 31        58.1  35.5  41.9            0.25
+OVERNIGHT  1         0.0   0.0 100.0           -1.00
 
 By symbol
      symbol  n  TP1_first%  TP2%   SL%  avgR(exit@TP1)
      AUDJPY  2        50.0  50.0  50.0            0.08
      AUDUSD  2        50.0  50.0  50.0            0.08
+     CADJPY  1         0.0   0.0 100.0           -1.00
      COPPER  2       100.0  50.0   0.0            1.15
         DJI  1         0.0   0.0 100.0           -1.00
         DXY  4         0.0   0.0 100.0           -1.00
@@ -84,7 +86,7 @@ RUSSELL2000  3        66.7  33.3  33.3            0.43
 By direction
 direction  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
       BUY 23        52.2  26.1 47.8            0.12
-     SELL 29        51.7  31.0 48.3            0.11
+     SELL 30        50.0  30.0 50.0            0.08
 
 📎 Detailed results: audit-results.csv
 
