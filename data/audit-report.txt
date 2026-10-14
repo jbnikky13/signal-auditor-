@@ -2,32 +2,31 @@
 
 📌 SUMMARY
 ────────────
-Signals: 59   •   Decided: 53
-Open: 4   •   Excluded from performance: 2
+Signals: 59   •   Decided: 57
+Open: 0   •   Excluded from performance: 2
 
 OUTCOMES
 ────────
 TP2 reached: 15
-TP1 → SL: 8
-TP1 only: 4
-SL first: 26
-Still open: 4
+TP1 → SL: 9
+TP1 only: 6
+SL first: 27
 Price-feed mismatch (excluded): 2
 
 📈 SETTLEMENT
 ────────────
-TP1 before SL: 50.9%
-TP2 reached: 28.3%
-SL first: 49.1%
-Expectancy @ TP1: +0.10R / trade
-Expectancy @ TP2: -0.00R / trade
-Total simulated R @ TP1: +5.10R
-Total simulated R @ TP2: -0.16R
+TP1 before SL: 52.6%
+TP2 reached: 26.3%
+SL first: 47.4%
+Expectancy @ TP1: +0.13R / trade
+Expectancy @ TP2: -0.04R / trade
+Total simulated R @ TP1: +7.55R
+Total simulated R @ TP2: -2.16R
 
 🧾 PROVIDER DATA
 ────────────────
-Claimed 3D hit rate: 53/53 signals available
-Provider average: 67.1%
+Claimed 3D hit rate: 57/57 signals available
+Provider average: 67.2%
 
 🔎 DATA QUALITY
 ──────────────
@@ -42,19 +41,19 @@ Excluded outcomes: 2
 By score band
 score_band  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
        <65  9        22.2  11.1 77.8           -0.52
-     65-69 32        56.2  34.4 43.8            0.21
-     70-74  6        66.7  16.7 33.3            0.43
+     65-69 34        55.9  32.4 44.1            0.20
+     70-74  8        75.0  12.5 25.0            0.61
        75+  6        50.0  33.3 50.0            0.08
 
 By cross-market agreement
  xmkt  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
- 100% 11        63.6  36.4 36.4            0.37
-<100% 42        47.6  26.2 52.4            0.02
+ 100% 13        69.2  30.8 30.8            0.49
+<100% 44        47.7  25.0 52.3            0.03
 
 By batch
     batch  n  TP1_first%  TP2%   SL%  avgR(exit@TP1)
 AFTERNOON 21        42.9  19.0  57.1           -0.08
-  EVENING 31        58.1  35.5  41.9            0.25
+  EVENING 35        60.0  31.4  40.0            0.29
 OVERNIGHT  1         0.0   0.0 100.0           -1.00
 
 By symbol
@@ -77,17 +76,18 @@ By symbol
      NZDUSD  2       100.0  50.0   0.0            1.16
 RUSSELL2000  3        66.7  33.3  33.3            0.43
         SPX  3        66.7  33.3  33.3            0.43
-      UKOIL  2        50.0   0.0  50.0            0.08
+      UKOIL  3        66.7   0.0  33.3            0.43
      USDCAD  3       100.0  33.3   0.0            1.15
      USDCHF  2       100.0  50.0   0.0            1.15
+      USOIL  1       100.0   0.0   0.0            1.15
         VIX  4        25.0   0.0  75.0           -0.46
-     XAGUSD  2         0.0   0.0 100.0           -1.00
-     XAUUSD  1         0.0   0.0 100.0           -1.00
+     XAGUSD  3         0.0   0.0 100.0           -1.00
+     XAUUSD  2        50.0   0.0  50.0            0.07
 
 By direction
 direction  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
-      BUY 23        52.2  26.1 47.8            0.12
-     SELL 30        50.0  30.0 50.0            0.08
+      BUY 25        56.0  24.0 44.0            0.20
+     SELL 32        50.0  28.1 50.0            0.08
 
 📎 Detailed results: audit-results.csv
 
