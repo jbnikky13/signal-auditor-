@@ -2,33 +2,32 @@
 
 📌 SUMMARY
 ────────────
-Signals: 71   •   Decided: 66
-Open: 2   •   Excluded from performance: 3
+Signals: 71   •   Decided: 68
+Open: 0   •   Excluded from performance: 3
 
 OUTCOMES
 ────────
-TP2 reached: 17
+TP2 reached: 18
 TP1 → SL: 10
-TP1 only: 6
+TP1 only: 7
 SL first: 33
-Still open: 2
 Price-feed mismatch (excluded): 2
 No resolution within horizon: 1
 
 📈 SETTLEMENT
 ────────────
-TP1 before SL: 50.0%
-TP2 reached: 25.8%
-SL first: 50.0%
-Expectancy @ TP1: +0.08R / trade
-Expectancy @ TP2: -0.08R / trade
-Total simulated R @ TP1: +5.01R
-Total simulated R @ TP2: -4.65R
+TP1 before SL: 51.5%
+TP2 reached: 26.5%
+SL first: 48.5%
+Expectancy @ TP1: +0.11R / trade
+Expectancy @ TP2: -0.04R / trade
+Total simulated R @ TP1: +7.30R
+Total simulated R @ TP2: -2.39R
 
 🧾 PROVIDER DATA
 ────────────────
-Claimed 3D hit rate: 66/66 signals available
-Provider average: 65.7%
+Claimed 3D hit rate: 68/68 signals available
+Provider average: 65.4%
 
 🔎 DATA QUALITY
 ──────────────
@@ -42,19 +41,19 @@ Excluded outcomes: 3
 
 By score band
 score_band  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
-       <65 13        30.8  15.4 69.2           -0.34
+       <65 15        40.0  20.0 60.0           -0.14
      65-69 36        52.8  30.6 47.2            0.14
      70-74 10        60.0  10.0 40.0            0.29
        75+  7        57.1  42.9 42.9            0.23
 
 By cross-market agreement
  xmkt  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
- 100% 17        58.8  29.4 41.2            0.27
-<100% 49        46.9  24.5 53.1            0.01
+ 100% 18        61.1  33.3 38.9            0.31
+<100% 50        48.0  24.0 52.0            0.03
 
 By batch
     batch  n  TP1_first%  TP2%   SL%  avgR(exit@TP1)
-AFTERNOON 25        40.0  16.0  60.0           -0.14
+AFTERNOON 27        44.4  18.5  55.6           -0.04
   EVENING 37        59.5  32.4  40.5            0.28
   MORNING  1       100.0 100.0   0.0            1.16
 OVERNIGHT  3         0.0   0.0 100.0           -1.00
@@ -67,7 +66,7 @@ By symbol
      COPPER  4        50.0  25.0  50.0            0.08
         DJI  1         0.0   0.0 100.0           -1.00
         DXY  4         0.0   0.0 100.0           -1.00
-     EURCHF  2        50.0  50.0  50.0            0.08
+     EURCHF  3        66.7  33.3  33.3            0.43
      EURGBP  3        66.7  33.3  33.3            0.43
      EURJPY  3        66.7  33.3  33.3            0.44
      EURUSD  1       100.0 100.0   0.0            1.15
@@ -76,7 +75,7 @@ By symbol
      GBPUSD  2         0.0   0.0 100.0           -1.00
      NASDAQ  1         0.0   0.0 100.0           -1.00
      NATGAS  5        60.0  40.0  40.0            0.29
-     NZDUSD  3        66.7  33.3  33.3            0.44
+     NZDUSD  4        75.0  50.0  25.0            0.62
 RUSSELL2000  3        66.7  33.3  33.3            0.43
         SPX  3        66.7  33.3  33.3            0.43
       UKOIL  4        75.0  25.0  25.0            0.61
@@ -90,7 +89,7 @@ RUSSELL2000  3        66.7  33.3  33.3            0.43
 By direction
 direction  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
       BUY 31        54.8  25.8 45.2            0.18
-     SELL 35        45.7  25.7 54.3           -0.02
+     SELL 37        48.6  27.0 51.4            0.05
 
 📎 Detailed results: audit-results.csv
 
