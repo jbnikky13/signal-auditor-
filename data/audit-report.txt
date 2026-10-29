@@ -2,8 +2,8 @@
 
 📌 SUMMARY
 ────────────
-Signals: 75   •   Decided: 72
-Open: 0   •   Excluded from performance: 3
+Signals: 77   •   Decided: 72
+Open: 2   •   Excluded from performance: 3
 
 OUTCOMES
 ────────
@@ -11,6 +11,7 @@ TP2 reached: 19
 TP1 → SL: 12
 TP1 only: 6
 SL first: 35
+Still open: 2
 Price-feed mismatch (excluded): 2
 No resolution within horizon: 1
 
@@ -31,9 +32,9 @@ Provider average: 64.6%
 
 🔎 DATA QUALITY
 ──────────────
-Missing score: 0/75
-Missing TP2: 0/75
-Missing claimed hit rate: 0/75
+Missing score: 0/77
+Missing TP2: 0/77
+Missing claimed hit rate: 0/77
 Excluded outcomes: 3
 
 📊 BREAKDOWNS
