@@ -3,7 +3,7 @@
 📌 SUMMARY
 ────────────
 Signals: 78   •   Decided: 74
-Open: 1   •   Excluded from performance: 3
+Open: 0   •   Excluded from performance: 4
 
 OUTCOMES
 ────────
@@ -11,9 +11,8 @@ TP2 reached: 21
 TP1 → SL: 12
 TP1 only: 6
 SL first: 35
-Still open: 1
 Price-feed mismatch (excluded): 2
-No resolution within horizon: 1
+No resolution within horizon: 2
 
 📈 SETTLEMENT
 ────────────
@@ -35,7 +34,7 @@ Provider average: 64.0%
 Missing score: 0/78
 Missing TP2: 0/78
 Missing claimed hit rate: 0/78
-Excluded outcomes: 3
+Excluded outcomes: 4
 
 📊 BREAKDOWNS
 ─────────────
