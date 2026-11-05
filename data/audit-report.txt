@@ -2,33 +2,32 @@
 
 📌 SUMMARY
 ────────────
-Signals: 83   •   Decided: 78
-Open: 1   •   Excluded from performance: 4
+Signals: 83   •   Decided: 79
+Open: 0   •   Excluded from performance: 4
 
 OUTCOMES
 ────────
 TP2 reached: 21
 TP1 → SL: 12
 TP1 only: 8
-SL first: 37
-Still open: 1
+SL first: 38
 Price-feed mismatch (excluded): 2
 No resolution within horizon: 2
 
 📈 SETTLEMENT
 ────────────
-TP1 before SL: 52.6%
-TP2 reached: 26.9%
-SL first: 47.4%
-Expectancy @ TP1: +0.13R / trade
-Expectancy @ TP2: -0.02R / trade
-Total simulated R @ TP1: +10.17R
-Total simulated R @ TP2: -1.63R
+TP1 before SL: 51.9%
+TP2 reached: 26.6%
+SL first: 48.1%
+Expectancy @ TP1: +0.12R / trade
+Expectancy @ TP2: -0.04R / trade
+Total simulated R @ TP1: +9.17R
+Total simulated R @ TP2: -2.63R
 
 🧾 PROVIDER DATA
 ────────────────
-Claimed 3D hit rate: 78/78 signals available
-Provider average: 63.3%
+Claimed 3D hit rate: 79/79 signals available
+Provider average: 62.9%
 
 🔎 DATA QUALITY
 ──────────────
@@ -42,19 +41,19 @@ Excluded outcomes: 4
 
 By score band
 score_band  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
-       <65 22        40.9  18.2 59.1           -0.12
+       <65 23        39.1  17.4 60.9           -0.16
      65-69 39        56.4  33.3 43.6            0.21
      70-74 10        60.0  10.0 40.0            0.29
        75+  7        57.1  42.9 42.9            0.23
 
 By cross-market agreement
  xmkt  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
- 100% 23        65.2  39.1 34.8            0.40
-<100% 55        47.3  21.8 52.7            0.02
+ 100% 23        65.2  39.1 34.8             0.4
+<100% 56        46.4  21.4 53.6            -0.0
 
 By batch
     batch  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
-AFTERNOON 31        48.4  22.6 51.6            0.04
+AFTERNOON 32        46.9  21.9 53.1            0.01
   EVENING 38        57.9  31.6 42.1            0.25
   MORNING  4        75.0  50.0 25.0            0.62
 OVERNIGHT  5        20.0   0.0 80.0           -0.58
@@ -68,7 +67,7 @@ By symbol
         DJI  1         0.0   0.0 100.0           -1.00
         DXY  4         0.0   0.0 100.0           -1.00
      EURCHF  3        66.7  33.3  33.3            0.43
-     EURGBP  4        75.0  25.0  25.0            0.61
+     EURGBP  5        60.0  20.0  40.0            0.29
      EURJPY  4        50.0  25.0  50.0            0.08
      EURUSD  1       100.0 100.0   0.0            1.15
      GBPCHF  2         0.0   0.0 100.0           -1.00
@@ -90,7 +89,7 @@ RUSSELL2000  3        66.7  33.3  33.3            0.43
 By direction
 direction  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
       BUY 35        57.1  25.7 42.9            0.23
-     SELL 43        48.8  27.9 51.2            0.05
+     SELL 44        47.7  27.3 52.3            0.03
 
 📎 Detailed results: audit-results.csv
 
