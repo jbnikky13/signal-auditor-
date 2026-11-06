@@ -2,33 +2,32 @@
 
 📌 SUMMARY
 ────────────
-Signals: 85   •   Decided: 80
-Open: 1   •   Excluded from performance: 4
+Signals: 85   •   Decided: 81
+Open: 0   •   Excluded from performance: 4
 
 OUTCOMES
 ────────
-TP2 reached: 21
+TP2 reached: 22
 TP1 → SL: 12
 TP1 only: 8
 SL first: 39
-Still open: 1
 Price-feed mismatch (excluded): 2
 No resolution within horizon: 2
 
 📈 SETTLEMENT
 ────────────
-TP1 before SL: 51.2%
-TP2 reached: 26.2%
-SL first: 48.8%
-Expectancy @ TP1: +0.10R / trade
-Expectancy @ TP2: -0.05R / trade
-Total simulated R @ TP1: +8.17R
-Total simulated R @ TP2: -3.63R
+TP1 before SL: 51.9%
+TP2 reached: 27.2%
+SL first: 48.1%
+Expectancy @ TP1: +0.12R / trade
+Expectancy @ TP2: -0.02R / trade
+Total simulated R @ TP1: +9.32R
+Total simulated R @ TP2: -1.37R
 
 🧾 PROVIDER DATA
 ────────────────
-Claimed 3D hit rate: 80/80 signals available
-Provider average: 62.9%
+Claimed 3D hit rate: 81/81 signals available
+Provider average: 62.7%
 
 🔎 DATA QUALITY
 ──────────────
@@ -42,19 +41,19 @@ Excluded outcomes: 4
 
 By score band
 score_band  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
-       <65 23        39.1  17.4 60.9           -0.16
+       <65 24        41.7  20.8 58.3           -0.11
      65-69 40        55.0  32.5 45.0            0.18
      70-74 10        60.0  10.0 40.0            0.29
        75+  7        57.1  42.9 42.9            0.23
 
 By cross-market agreement
  xmkt  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
- 100% 23        65.2  39.1 34.8            0.40
+ 100% 24        66.7  41.7 33.3            0.43
 <100% 57        45.6  21.1 54.4           -0.02
 
 By batch
     batch  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
-AFTERNOON 32        46.9  21.9 53.1            0.01
+AFTERNOON 33        48.5  24.2 51.5            0.04
   EVENING 38        57.9  31.6 42.1            0.25
   MORNING  5        60.0  40.0 40.0            0.29
 OVERNIGHT  5        20.0   0.0 80.0           -0.58
@@ -70,7 +69,7 @@ By symbol
      EURCHF  3        66.7  33.3  33.3            0.43
      EURGBP  5        60.0  20.0  40.0            0.29
      EURJPY  4        50.0  25.0  50.0            0.08
-     EURUSD  1       100.0 100.0   0.0            1.15
+     EURUSD  2       100.0 100.0   0.0            1.15
      GBPCHF  2         0.0   0.0 100.0           -1.00
      GBPJPY  2        50.0  50.0  50.0            0.08
      GBPUSD  2         0.0   0.0 100.0           -1.00
@@ -91,7 +90,7 @@ RUSSELL2000  3        66.7  33.3  33.3            0.43
 By direction
 direction  n  TP1_first%  TP2%  SL%  avgR(exit@TP1)
       BUY 36        55.6  25.0 44.4            0.19
-     SELL 44        47.7  27.3 52.3            0.03
+     SELL 45        48.9  28.9 51.1            0.05
 
 📎 Detailed results: audit-results.csv
 
