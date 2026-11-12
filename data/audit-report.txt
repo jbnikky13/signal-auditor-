@@ -11,7 +11,7 @@ TP2 reached: 22
 TP1 → SL: 12
 TP1 only: 8
 SL first: 41
-No market data: 2
+Data gap: 2
 Price-feed mismatch (excluded): 2
 No resolution within horizon: 2
 
